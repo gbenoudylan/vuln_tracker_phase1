@@ -3,3 +3,4 @@ openpyxl>=3.1
 rapidfuzz>=3.0
 requests>=2.31
 streamlit>=1.30
+python-dotenv>=1.0
