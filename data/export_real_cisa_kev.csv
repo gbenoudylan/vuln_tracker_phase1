@@ -1,0 +1,31 @@
+Hostname,IP Address,CVE ID,Vulnerability Name,Vendor,Product,Detected Date,Status,Environment,EOL,Known Ransomware Use
+srv-mlflow-01,10.0.4.8,CVE-2026-64849,MLflow Server-Side Request Forgery Vulnerability,MLflow,MLflow,2026-08-19,Open,production,non,Unknown
+srv-internet-02,10.0.9.64,CVE-2026-33824,Microsoft Internet Key Exchange (IKE) Service Extensions Double Free Vulnerability,Microsoft,Internet Key Exchange (IKE) Service Extensions,2026-08-18,Open,interne,oui,Unknown
+srv-vmware-03,10.0.8.37,CVE-2026-59310,Broadcom VMware vCenter Path Traversal Vulnerability,Broadcom,VMware vCenter,2026-08-18,Open,production,non,Unknown
+srv-sharepoi-04,10.0.4.175,CVE-2026-55040,Microsoft SharePoint Weak Authentication Vulnerability,Microsoft,SharePoint,2026-08-18,Open,production-internet,oui,Unknown
+srv-macos-05,10.0.18.24,CVE-2026-65400,Apple macOS Improper Authentication Vulnerability,Apple,macOS,2026-08-18,Open,production-internet,non,Unknown
+srv-ray-06,10.0.19.110,CVE-2025-62593,Ray-Project Ray Code Injection Vulnerability,Ray-Project,Ray,2026-08-17,Open,production,non,Unknown
+srv-secure-07,10.0.2.9,CVE-2026-20349,Cisco Secure Firewall Adaptive Security Appliance (ASA) and Secure Firewall Threat Defense (FTD) Heap Inspection Vulnerability,Cisco,Secure Firewall Adaptive Security Appliance (ASA) and Secure Firewall Threat Defense (FTD) ,2026-08-11,Open,production,non,Unknown
+srv-windows-08,10.0.3.57,CVE-2026-68820,Microsoft Windows Ancillary Function Driver for WinSock Use-After-Free Vulnerability,Microsoft,Windows Ancillary Function Driver for WinSock ,2026-08-11,Open,production-internet,oui,Unknown
+srv-metabase-09,10.0.8.131,CVE-2026-72898,Metabase SQL Injection Vulnerability,Metabase,Metabase,2026-08-11,Open,production,non,Unknown
+srv-loadmast-10,10.0.20.8,CVE-2026-8037,Progress LoadMaster Command Injection Vulnerability,Progress,LoadMaster,2026-08-07,Open,production-internet,non,Unknown
+srv-teamcity-11,10.0.18.52,CVE-2026-63077,JetBrains TeamCity Deserialization of Untrusted Data Vulnerability,JetBrains,TeamCity,2026-08-05,Open,test,non,Unknown
+srv-n-centra-12,10.0.18.109,CVE-2026-18556,N-able N-central Authentication Bypass Using an Alternate Path or Channel Vulnerability,N-able,N-central,2026-08-04,Open,production,non,Unknown
+srv-tomcat-13,10.0.8.116,CVE-2026-34486,Apache Tomcat Missing Encryption of Sensitive Data Vulnerability,Apache,Tomcat,2026-08-04,Open,test,non,Unknown
+srv-langflow-14,10.0.19.73,CVE-2026-9198,IBM Langflow Code Injection Vulnerability,IBM,Langflow,2026-08-04,Open,production,non,Unknown
+srv-n-centra-15,10.0.1.196,CVE-2026-18577,N-able N-central Authentication Bypass Using an Alternate Path or Channel Vulnerability,N-able,N-central,2026-08-03,Open,production,non,Unknown
+srv-secure-16,10.0.6.180,CVE-2026-20316,Cisco Secure Firewall Management Center Use of Hard-coded Password Vulnerability,Cisco,Secure Firewall Management Center (FMC),2026-07-29,Open,production,non,Unknown
+srv-fortios-17,10.0.14.89,CVE-2025-68686,Fortinet FortiOS Exposure of Sensitive Information to an Unauthorized Actor Vulnerability,Fortinet,FortiOS,2026-07-27,Open,production,non,Unknown
+srv-veloclou-18,10.0.9.41,CVE-2026-16812,Arista VeloCloud Orchestrator On-Prem OS Command Injection Vulnerability,Arista,VeloCloud Orchestrator,2026-07-27,Open,production,non,Unknown
+srv-smartcon-19,10.0.7.247,CVE-2026-16232,Check Point SmartConsole Improper Authentication Vulnerability,Check Point,SmartConsole,2026-07-22,Open,production,non,Unknown
+srv-sharepoi-20,10.0.11.28,CVE-2026-50522,Microsoft SharePoint Deserialization of Untrusted Data Vulnerability ,Microsoft,SharePoint,2026-07-22,Open,production-internet,non,Unknown
+srv-core-21,10.0.3.99,CVE-2026-60137,WordPress Core SQL Injection Vulnerability,WordPress,Core,2026-07-21,Open,interne,non,Unknown
+srv-core-22,10.0.4.93,CVE-2026-63030,WordPress Core Interpretation Conflict Vulnerability,WordPress,Core,2026-07-21,Open,production,non,Unknown
+srv-langflow-23,10.0.12.156,CVE-2026-0770,Langflow Inclusion of Functionality from Untrusted Control Sphere Vulnerability,Langflow,Langflow,2026-07-21,Open,interne,non,Unknown
+srv-dd-wrt-24,10.0.9.208,CVE-2021-27137,DD-WRT Stack-Based Buffer Overflow Vulnerability,DD-WRT,DD-WRT,2026-07-21,Open,production,non,Unknown
+srv-sharepoi-25,10.0.2.188,CVE-2026-58644,Microsoft SharePoint Deserialization of Untrusted Data Vulnerability,Microsoft,SharePoint,2026-07-16,Open,production,non,Unknown
+srv-fortisan-26,10.0.15.139,CVE-2026-25089,Fortinet FortiSandbox OS Command Injection Vulnerability,Fortinet,FortiSandbox,2026-07-16,Open,test,non,Unknown
+srv-fortisan-27,10.0.4.251,CVE-2026-39808,Fortinet FortiSandbox OS Command Injection Vulnerability,Fortinet,FortiSandbox,2026-07-16,Open,test,non,Unknown
+srv-e-busine-28,10.0.13.22,CVE-2026-46817,Oracle E-Business Suite Improper Privilege Management Vulnerability,Oracle,E-Business Suite,2026-07-15,Open,production,non,Unknown
+srv-knx-29,10.0.18.77,CVE-2023-4346,KNX Association KNX Protocol Connection Authorization Option 1 Overly Restrictive Account Lockout Mechanism Vulnerability,KNX Association,KNX Protocol Connection Authorization Option 1,2026-07-15,Open,interne,non,Unknown
+srv-active-30,10.0.20.228,CVE-2026-56155,Microsoft Active Directory Federation Services Insufficient Granularity of Access Control Vulnerability ,Microsoft,Active Directory Federation Services,2026-07-14,Open,production,non,Unknown

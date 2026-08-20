@@ -38,5 +38,245 @@
     "severity_nvd": "CRITICAL",
     "published_date": "2021-12-10T10:15:09.143",
     "description": "Apache Log4j2 2.0-beta9 through 2.15.0 (excluding security releases 2.12.2, 2.12.3, and 2.3.1) JNDI features used in configuration, log messages, and parameters do not protect against attacker controlled LDAP and other JNDI related endpoints. An attacker who can control log messages or log message parameters can execute arbitrary code loaded from LDAP servers when message lookup substitution is enabled. From log4j 2.15.0, this behavior has been disabled by default. From version 2.16.0 (along with 2.12.2, 2.12.3, and 2.3.1), this functionality has been completely removed. Note that this vulnerability is specific to log4j-core and does not affect log4net, log4cxx, or other Apache Logging Services projects."
+  },
+  "CVE-2026-64849": {
+    "cve_id": "CVE-2026-64849",
+    "cvss_score_nvd": 9.3,
+    "cvss_version": "3.1",
+    "severity_nvd": "CRITICAL",
+    "published_date": "2026-08-17T22:17:23.580",
+    "description": "MLflow is an open source AI engineering platform for agents, large language models, and machine learning models. Prior to 3.15.0, the unauthenticated POST /api/2.0/mlflow/webhooks/{id}/test endpoint calls _validate_webhook_url() in mlflow/utils/validation.py only for the original URL while mlflow/webhooks/delivery.py follows redirects and re-resolves the hostname without pinning the validated address, allowing attackers to reach internal or cloud metadata services and receive response_status and response_body. This issue is fixed in version 3.15.0."
+  },
+  "CVE-2026-33824": {
+    "cve_id": "CVE-2026-33824",
+    "cvss_score_nvd": 9.8,
+    "cvss_version": "3.1",
+    "severity_nvd": "CRITICAL",
+    "published_date": "2026-04-14T18:17:34.767",
+    "description": "Double free in Windows IKE Extension allows an unauthorized attacker to execute code over a network."
+  },
+  "CVE-2026-59310": {
+    "cve_id": "CVE-2026-59310",
+    "cvss_score_nvd": 9.8,
+    "cvss_version": "3.1",
+    "severity_nvd": "CRITICAL",
+    "published_date": "2026-07-30T13:16:53.993",
+    "description": "VMware vCenter contains a directory traversal vulnerability in the Syslog server. A malicious actor with network access to vCenter may exploit this issue to execute arbitrary code."
+  },
+  "CVE-2026-55040": {
+    "cve_id": "CVE-2026-55040",
+    "cvss_score_nvd": 9.1,
+    "cvss_version": "3.1",
+    "severity_nvd": "CRITICAL",
+    "published_date": "2026-07-14T18:18:15.413",
+    "description": "Weak authentication in Microsoft Office SharePoint allows an unauthorized attacker to bypass a security feature over a network."
+  },
+  "CVE-2026-65400": {
+    "cve_id": "CVE-2026-65400",
+    "cvss_score_nvd": 9.8,
+    "cvss_version": "3.1",
+    "severity_nvd": "CRITICAL",
+    "published_date": "2026-08-06T22:18:14.533",
+    "description": "An authentication issue was addressed with improved state management. This issue is fixed in macOS Sequoia 15.7.9, macOS Sonoma 14.8.9, macOS Tahoe 26.6.1. An attacker on the network may be able to authenticate to Screen Sharing without valid credentials."
+  },
+  "CVE-2025-62593": {
+    "cve_id": "CVE-2025-62593",
+    "cvss_score_nvd": 8.8,
+    "cvss_version": "3.1",
+    "severity_nvd": "HIGH",
+    "published_date": "2025-11-26T23:15:47.927",
+    "description": "Ray is an AI compute engine. Prior to version 2.52.0, developers working with Ray as a development tool can be exploited via a critical RCE vulnerability exploitable via Firefox and Safari. This vulnerability is due to an insufficient guard against browser-based attacks, as the current defense uses the User-Agent header starting with the string \"Mozilla\" as a defense mechanism. This defense is insufficient as the fetch specification allows the User-Agent header to be modified. Combined with a DNS rebinding attack against the browser, and this vulnerability is exploitable against a developer running Ray who inadvertently visits a malicious website, or is served a malicious advertisement (malvertising). This issue has been patched in version 2.52.0."
+  },
+  "CVE-2026-20349": {
+    "cve_id": "CVE-2026-20349",
+    "cvss_score_nvd": 8.6,
+    "cvss_version": "3.1",
+    "severity_nvd": "HIGH",
+    "published_date": "2026-08-11T17:17:48.833",
+    "description": "A vulnerability in the Remote Access SSL VPN service for Cisco Secure Firewall Adaptive Security Appliance (ASA) Software and Cisco Secure Firewall Threat Defense (FTD) Software could allow an unauthenticated, remote attacker to cause the device to reload unexpectedly, resulting in a denial of service (DoS) condition.&nbsp;\r\n\r\nThis vulnerability is due to insufficient error checking when processing HTTP requests. An attacker could exploit this vulnerability by sending a crafted HTTP request to the Remote Access SSL VPN service on an affected device. A successful exploit could allow the attacker to cause the affected device to reload, resulting in a DoS condition."
+  },
+  "CVE-2026-68820": {
+    "cve_id": "CVE-2026-68820",
+    "cvss_score_nvd": 7.0,
+    "cvss_version": "3.1",
+    "severity_nvd": "HIGH",
+    "published_date": "2026-08-11T17:19:06.357",
+    "description": "Use after free in Windows Ancillary Function Driver for WinSock allows an authorized attacker to elevate privileges locally."
+  },
+  "CVE-2026-72898": {
+    "cve_id": "CVE-2026-72898",
+    "cvss_score_nvd": 10.0,
+    "cvss_version": "3.1",
+    "severity_nvd": "CRITICAL",
+    "published_date": "2026-08-10T18:18:53.300",
+    "description": "Metabase allows a remote, unauthenticated attacker to inject arbitrary SQL via the '/reset_password' database endpoint and gain administrator access to the connected Metabase instance."
+  },
+  "CVE-2026-8037": {
+    "cve_id": "CVE-2026-8037",
+    "cvss_score_nvd": 9.6,
+    "cvss_version": "3.1",
+    "severity_nvd": "CRITICAL",
+    "published_date": "2026-06-04T14:16:45.177",
+    "description": "OS Command Injection Remote Code Execution Vulnerability in API in Progress ADC Products allows an un-authenticated attacker to execute arbitrary commands on the LoadMaster appliance by exploiting unsanitized input in multiple command endpoints"
+  },
+  "CVE-2026-63077": {
+    "cve_id": "CVE-2026-63077",
+    "cvss_score_nvd": 9.8,
+    "cvss_version": "3.1",
+    "severity_nvd": "CRITICAL",
+    "published_date": "2026-07-27T17:16:38.830",
+    "description": "In JetBrains TeamCity before 2026.1.3, 2025.11.7 unauthenticated remote code execution was possible via the agent polling protocol"
+  },
+  "CVE-2026-18556": {
+    "cve_id": "CVE-2026-18556",
+    "cvss_score_nvd": 7.4,
+    "cvss_version": "3.1",
+    "severity_nvd": "HIGH",
+    "published_date": "2026-08-01T20:16:37.157",
+    "description": "Authentication bypass using an alternate path or channel vulnerability in N-able N-central allows Authentication Bypass.\n\nThis issue affects N-central: through 2026.1."
+  },
+  "CVE-2026-34486": {
+    "cve_id": "CVE-2026-34486",
+    "cvss_score_nvd": 7.5,
+    "cvss_version": "3.1",
+    "severity_nvd": "HIGH",
+    "published_date": "2026-04-09T20:16:25.063",
+    "description": "Missing Encryption of Sensitive Data vulnerability in Apache Tomcat due to the fix for CVE-2026-29146 allowing the bypass of the EncryptInterceptor.\n\nThis issue affects Apache Tomcat: 11.0.20, 10.1.53, 9.0.116.\n\nUsers are recommended to upgrade to version 11.0.21, 10.1.54 or 9.0.117, which fix the issue."
+  },
+  "CVE-2026-9198": {
+    "cve_id": "CVE-2026-9198",
+    "cvss_score_nvd": 9.8,
+    "cvss_version": "3.1",
+    "severity_nvd": "CRITICAL",
+    "published_date": "2026-07-17T18:17:17.340",
+    "description": "IBM Langflow OSS 1.0.0 through 1.10.0 allows unauthenticated attackers to chain /api/v1/auto_login (mints SUPERUSER tokens to any network caller) with /api/v1/validate/code (executes user code via exec()) to achieve full RCE on default Langflow deployments"
+  },
+  "CVE-2026-18577": {
+    "cve_id": "CVE-2026-18577",
+    "cvss_score_nvd": 8.1,
+    "cvss_version": "3.1",
+    "severity_nvd": "HIGH",
+    "published_date": "2026-08-02T23:16:26.210",
+    "description": "An incomplete patch for CVE-2026-18556 allows for authentication bypass and account takeover in N-central Versions through 2026.3.1"
+  },
+  "CVE-2026-20316": {
+    "cve_id": "CVE-2026-20316",
+    "cvss_score_nvd": 5.3,
+    "cvss_version": "3.1",
+    "severity_nvd": "MEDIUM",
+    "published_date": "2026-07-29T17:16:51.840",
+    "description": "A vulnerability in the web interface of Cisco Secure Firewall Management Center (FMC) Software could allow an unauthenticated, remote attacker to log in to an affected device using a low-privileged account to access sensitive data within the impacted systems.\r\n\r\nThis vulnerability is due to the presence of static user credentials for a low-privileged&nbsp;account. An attacker could exploit this vulnerability by using the account to log in to an affected system. A successful exploit could allow the attacker to log in to the affected system and access sensitive data as the low-privileged user.&nbsp;\r\nNote:&nbsp;If the FMC management interface does not have public internet access, the attack surface that is associated with this vulnerability is reduced.&nbsp;&nbsp;\r\nCisco has assigned this security advisory a Security Impact Rating (SIR) of High rather than Medium as the score indicates. The reason is that this vulnerability can be used with other Cisco Secure FMC Software vulnerabilities to elevate privileges."
+  },
+  "CVE-2025-68686": {
+    "cve_id": "CVE-2025-68686",
+    "cvss_score_nvd": 5.9,
+    "cvss_version": "3.1",
+    "severity_nvd": "MEDIUM",
+    "published_date": "2026-02-10T16:16:09.630",
+    "description": "An Exposure of Sensitive Information to an Unauthorized Actor vulnerability [CWE-200] vulnerability in Fortinet FortiOS 7.6.0 through 7.6.1, FortiOS 7.4.0 through 7.4.6, FortiOS 7.2 all versions, FortiOS 7.0 all versions, FortiOS 6.4 all versions may allow a remote unauthenticated attacker to bypass the patch developed for the symbolic link persistency mechanism observed in some post-exploit cases, via crafted HTTP requests. An attacker would need first to have compromised the product via another vulnerability, at filesystem level."
+  },
+  "CVE-2026-16812": {
+    "cve_id": "CVE-2026-16812",
+    "cvss_score_nvd": 10.0,
+    "cvss_version": "3.1",
+    "severity_nvd": "CRITICAL",
+    "published_date": "2026-07-27T16:17:03.640",
+    "description": "VeloCloud Orchestrator (VCO) on-prem has a security issue where this issue may allow a remote attacker to access privileged internal functionality and impact the VCO host. Successful exploitation may compromise the confidentiality, integrity, and availability of the orchestrator and data managed by the orchestrator.\n\n\n\n\nThis functionality was intended to be for internal use only and is not intended to be remotely accessible.\n\n\n\n\nHosted and Dedicated versions of VCO have already been patched in advance of this notice going out.\n\n\n\n\nThis issue was discovered externally and is known to be actively exploited."
+  },
+  "CVE-2026-16232": {
+    "cve_id": "CVE-2026-16232",
+    "cvss_score_nvd": 9.8,
+    "cvss_version": "3.1",
+    "severity_nvd": "CRITICAL",
+    "published_date": "2026-07-22T14:17:15.513",
+    "description": "An authentication bypass vulnerability in the Check Point SmartConsole login process allows an unauthenticated remote attacker to obtain an application login token and use it to authenticate with full administrative privileges. Successful exploitation allows the attacker to modify security policies and security configurations. Remote exploitation requires internet access to the Management Server IP address and a configuration that does not restrict Trusted Clients. Check Point is aware that this vulnerability is being exploited and has affected a very small number of customers."
+  },
+  "CVE-2026-50522": {
+    "cve_id": "CVE-2026-50522",
+    "cvss_score_nvd": 9.8,
+    "cvss_version": "3.1",
+    "severity_nvd": "CRITICAL",
+    "published_date": "2026-07-14T17:17:01.547",
+    "description": "Deserialization of untrusted data in Microsoft Office SharePoint allows an unauthorized attacker to execute code over a network."
+  },
+  "CVE-2026-60137": {
+    "cve_id": "CVE-2026-60137",
+    "cvss_score_nvd": 5.9,
+    "cvss_version": "3.1",
+    "severity_nvd": "MEDIUM",
+    "published_date": "2026-07-17T20:17:27.790",
+    "description": "WordPress 6.8.x before 6.8.6, 6.9.x before 6.9.5, and 7.0.x before 7.0.2 does not properly sanitise the author__not_in parameter of WP_Query, which could allow SQL Injection when a plugin or theme passes untrusted input to the parameter."
+  },
+  "CVE-2026-63030": {
+    "cve_id": "CVE-2026-63030",
+    "cvss_score_nvd": 9.8,
+    "cvss_version": "3.1",
+    "severity_nvd": "CRITICAL",
+    "published_date": "2026-07-17T20:17:28.490",
+    "description": "WordPress 6.9.x before 6.9.5 and 7.0.x before 7.0.2 is affected by a REST API batch endpoint route confusion issue which, combined with the author__not_in WP_Query SQL Injection (CVE-2026-60137), could allow an attacker to perform SQL Injection and achieve Remote Code Execution."
+  },
+  "CVE-2026-0770": {
+    "cve_id": "CVE-2026-0770",
+    "cvss_score_nvd": 9.8,
+    "cvss_version": "3.0",
+    "severity_nvd": "CRITICAL",
+    "published_date": "2026-01-23T04:16:04.063",
+    "description": "Langflow exec_globals Inclusion of Functionality from Untrusted Control Sphere Remote Code Execution Vulnerability. This vulnerability allows remote attackers to execute arbitrary code on affected installations of Langflow. Authentication is not required to exploit this vulnerability.\n\nThe specific flaw exists within the handling of the exec_globals parameter provided to the validate endpoint. The issue results from the inclusion of a resource from an untrusted control sphere. An attacker can leverage this vulnerability to execute code in the context of root. Was ZDI-CAN-27325."
+  },
+  "CVE-2021-27137": {
+    "cve_id": "CVE-2021-27137",
+    "cvss_score_nvd": 8.1,
+    "cvss_version": "3.1",
+    "severity_nvd": "HIGH",
+    "published_date": "2026-07-16T18:16:39.113",
+    "description": "An issue was discovered in router/upnp/src/ssdp.c in DD-WRT before 45724. An unsafe strcpy in the UPnP handling functionality allows an unauthenticated remote attacker to send a request that would overflow an internal fixed buffer. Exploitation requires the DD-WRT user to enable UPnP (which is off by default, and only listens on internal interfaces by default). This occurs in ssdp_msearch (reachable by an M-SEARCH request)."
+  },
+  "CVE-2026-58644": {
+    "cve_id": "CVE-2026-58644",
+    "cvss_score_nvd": 9.8,
+    "cvss_version": "3.1",
+    "severity_nvd": "CRITICAL",
+    "published_date": "2026-07-14T17:17:14.257",
+    "description": "Deserialization of untrusted data in Microsoft Office SharePoint allows an unauthorized attacker to execute code over a network."
+  },
+  "CVE-2026-25089": {
+    "cve_id": "CVE-2026-25089",
+    "cvss_score_nvd": 9.8,
+    "cvss_version": "3.1",
+    "severity_nvd": "CRITICAL",
+    "published_date": "2026-06-09T16:16:39.943",
+    "description": "A improper neutralization of special elements used in an os command ('os command injection') vulnerability in Fortinet FortiSandbox 5.0.0 through 5.0.5, FortiSandbox 4.4.0 through 4.4.8, FortiSandbox 4.2 all versions, FortiSandbox Cloud 5.0.4 through 5.0.5, FortiSandbox PaaS 5.0.4 through 5.0.5 may allow an unauthenticated attacker to execute unauthorized commands via specifically crafted HTTP requests"
+  },
+  "CVE-2026-39808": {
+    "cve_id": "CVE-2026-39808",
+    "cvss_score_nvd": 9.8,
+    "cvss_version": "3.1",
+    "severity_nvd": "CRITICAL",
+    "published_date": "2026-04-14T16:16:44.860",
+    "description": "A improper neutralization of special elements used in an os command ('os command injection') vulnerability in Fortinet FortiSandbox 4.4.0 through 4.4.8 may allow attacker to execute unauthorized code or commands via <insert attack vector here>"
+  },
+  "CVE-2026-46817": {
+    "cve_id": "CVE-2026-46817",
+    "cvss_score_nvd": 9.8,
+    "cvss_version": "3.1",
+    "severity_nvd": "CRITICAL",
+    "published_date": "2026-05-28T21:16:31.503",
+    "description": "Vulnerability in the Oracle Payments product of Oracle E-Business Suite (component: File Transmission).  Supported versions that are affected are 12.2.3-12.2.15. Easily exploitable vulnerability allows unauthenticated attacker with network access via HTTP to compromise Oracle Payments.  Successful attacks of this vulnerability can result in takeover of Oracle Payments. CVSS 3.1 Base Score 9.8 (Confidentiality, Integrity and Availability impacts).  CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H)."
+  },
+  "CVE-2023-4346": {
+    "cve_id": "CVE-2023-4346",
+    "cvss_score_nvd": 7.5,
+    "cvss_version": "3.1",
+    "severity_nvd": "HIGH",
+    "published_date": "2023-08-29T20:15:10.300",
+    "description": "\nKNX devices that use KNX Connection Authorization and support Option 1 are, depending on the implementation, vulnerable to being locked and users being unable to reset them to gain access to the device. The BCU key feature on the devices can be used to create a password for the device, but this password can often not be reset without entering the current password. If the device is configured to interface with a network, an attacker with access to that network could interface with the KNX installation, purge all devices without additional security options enabled, and set a BCU key, locking the device. Even if a device is not connected to a network, an attacker with physical access to the device could also exploit this vulnerability in the same way. \n\n"
+  },
+  "CVE-2026-56155": {
+    "cve_id": "CVE-2026-56155",
+    "cvss_score_nvd": 7.8,
+    "cvss_version": "3.1",
+    "severity_nvd": "HIGH",
+    "published_date": "2026-07-14T17:17:09.763",
+    "description": "Insufficient granularity of access control in Active Directory Federation Services (AD FS) allows an authorized attacker to elevate privileges locally."
   }
 }

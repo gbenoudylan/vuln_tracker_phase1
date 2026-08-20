@@ -53,4 +53,10 @@ COLUMN_MAPPING = {
 # Champs obligatoires pour que le traitement puisse continuer.
 # Si l'un d'eux est absent après mapping, on lève une erreur explicite
 # plutôt que de planter plus loin silencieusement.
-REQUIRED_FIELDS = ["hostname", "cve_id", "cvss_score"]
+# Champs obligatoires pour que le traitement puisse continuer.
+# Volontairement minimal : 'cvss_score' n'en fait PAS partie, car ce score
+# est de toute façon récupéré via le NVD à l'enrichissement (Phase 2).
+# Certaines sources légitimes (ex. le catalogue CISA KEV) ne fournissent
+# d'ailleurs aucun score CVSS par nature : CISA liste des vulnérabilités
+# activement exploitées, indépendamment de leur sévérité théorique.
+REQUIRED_FIELDS = ["hostname", "cve_id"]
