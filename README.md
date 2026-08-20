@@ -8,8 +8,103 @@ des exports de scan à formats variables sans réécriture de code.
 - [x] **Phase 1 — Ingestion universelle** (terminée, validée en conditions réelles)
 - [x] **Phase 2 — Enrichissement CVSS via API NVD** (terminée, validée en conditions réelles)
 - [x] **Phase 3 — Scoring composite + détection EOL** (terminée, validée en conditions réelles)
-- [x] **Phase 4 — Dashboard Streamlit** (terminée)
-- [ ] Phase 5 — Export du plan de remédiation
+- [x] **Phase 4 — Dashboard Streamlit** (terminée, validée en conditions réelles)
+- [x] **Phase 5 — Export du plan de remédiation** (terminée)
+
+**Projet complet.**
+
+## Phase 5 : Export du plan de remédiation (Excel + PDF)
+
+### Ce que ça apporte
+
+Les résultats du dashboard restent utiles tant que Streamlit tourne, mais
+un plan de remédiation doit pouvoir être diffusé par email, archivé, ou
+présenté en réunion. Cette phase génère deux formats de sortie exploitables
+hors de l'application.
+
+### Fonctionnalités
+
+- **Rapport Excel** (`reporting/export.py` → `generate_excel_report`) :
+  - Onglet **Synthèse** : compteurs par niveau de priorité, total, nombre
+    d'équipements EOL.
+  - Onglet **Plan de remédiation** : détail complet trié par score de
+    priorité décroissant, avec mise en couleur automatique par tier
+    (rouge P1, orange P2, jaune P3, vert P4), colonnes auto-ajustées,
+    filtres Excel natifs activés, en-tête figé.
+- **Rapport PDF** (`generate_pdf_report`) : page de synthèse avec les
+  mêmes compteurs, suivie d'une table détaillée colorée par priorité —
+  format compact adapté à une diffusion managériale ou une preuve d'audit.
+- **Intégration dashboard** : deux boutons dans l'interface Streamlit
+  génèrent et téléchargent ces rapports directement à partir de la
+  sélection filtrée à l'écran (donc un rapport ciblé, par exemple
+  uniquement les P1 ou uniquement les équipements EOL, est possible en
+  un clic).
+
+### Utilisation en ligne de commande
+
+```bash
+python -m reporting.export data/export_format_A.csv
+```
+Génère `output/plan_remediation.xlsx` et `output/plan_remediation.pdf`.
+
+### Utilisation depuis le dashboard
+
+```bash
+streamlit run dashboard/app.py
+```
+Filtre les résultats souhaités, puis clique sur "Générer le rapport Excel"
+ou "Générer le rapport PDF" en bas de page.
+
+### Tests
+
+`tests/test_export.py` valide, sur un jeu de données scoré simulé (pas
+besoin d'appel API pour cette phase, elle intervient après le scoring) :
+- la génération effective de fichiers Excel et PDF valides et non vides
+- la présence des deux onglets attendus dans le fichier Excel
+- la signature binaire correcte du fichier PDF (`%PDF-`)
+- l'absence de plantage si les colonnes optionnelles (`environment`,
+  `is_eol_flagged`) sont absentes du DataFrame
+
+```bash
+python tests/test_export.py
+```
+
+---
+
+## Vue d'ensemble du pipeline complet
+
+```
+Export de scan (n'importe quel format)
+        │
+        ▼
+ PHASE 1 : Ingestion universelle (mapping de colonnes, détection d'en-tête)
+        │
+        ▼
+ PHASE 2 : Enrichissement CVSS (API NVD, avec cache)
+        │
+        ▼
+ PHASE 3 : Scoring composite (CVSS + EPSS + criticité + EOL)
+        │
+        ▼
+ PHASE 4 : Dashboard interactif (Streamlit)
+        │
+        ▼
+ PHASE 5 : Export du plan de remédiation (Excel + PDF)
+```
+
+## Compétences démontrées par ce projet
+
+- Conception d'une architecture modulaire et découplée (chaque phase ne
+  dépend que de la sortie standardisée de la précédente)
+- Gestion de la résilience aux pannes (réseau, formats de fichiers,
+  colonnes manquantes) sans jamais interrompre le pipeline
+- Intégration d'APIs publiques de sécurité (NVD, EPSS) avec cache et
+  respect des limites de requêtes
+- Méthodologie de priorisation risk-based alignée sur les pratiques du
+  secteur (Tenable VPR, Qualys QDS)
+- Développement d'une interface utilisateur interactive (Streamlit)
+- Génération de livrables professionnels (Excel mis en forme, PDF)
+- Tests unitaires avec simulation d'API externes (mocking)
 
 ## Phase 4 : Dashboard Streamlit
 

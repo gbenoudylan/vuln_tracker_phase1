@@ -12,6 +12,7 @@ Lancement :
 from __future__ import annotations
 import sys
 import tempfile
+from io import BytesIO
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent.parent))
@@ -22,6 +23,7 @@ import streamlit as st
 from ingestion.ingest import load_file, IngestionError
 from enrichment.cvss_enrichment import enrich_dataframe
 from scoring.composite_score import run_full_scoring_pipeline
+from reporting.export import generate_excel_report, generate_pdf_report
 
 st.set_page_config(
     page_title="Vulnerability Prioritization Tracker",
@@ -179,6 +181,47 @@ def main():
         file_name="plan_remediation_priorise.csv",
         mime="text/csv",
     )
+
+    st.divider()
+
+    # --- Rapports Excel / PDF ---
+    st.subheader("📄 Rapports formatés")
+    st.caption(
+        "Génère un rapport mis en forme (mise en couleur par priorité, "
+        "synthèse) à partir de la sélection filtrée ci-dessus."
+    )
+
+    report_col1, report_col2 = st.columns(2)
+
+    with report_col1:
+        if st.button("Générer le rapport Excel", use_container_width=True):
+            with st.spinner("Génération du rapport Excel..."):
+                excel_buffer = BytesIO()
+                tmp_xlsx = Path(tempfile.gettempdir()) / "plan_remediation.xlsx"
+                generate_excel_report(filtered, tmp_xlsx)
+                excel_buffer.write(tmp_xlsx.read_bytes())
+            st.download_button(
+                "⬇️ Télécharger le rapport Excel",
+                data=excel_buffer.getvalue(),
+                file_name="plan_remediation.xlsx",
+                mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+                use_container_width=True,
+            )
+
+    with report_col2:
+        if st.button("Générer le rapport PDF", use_container_width=True):
+            with st.spinner("Génération du rapport PDF..."):
+                pdf_buffer = BytesIO()
+                tmp_pdf = Path(tempfile.gettempdir()) / "plan_remediation.pdf"
+                generate_pdf_report(filtered, tmp_pdf)
+                pdf_buffer.write(tmp_pdf.read_bytes())
+            st.download_button(
+                "⬇️ Télécharger le rapport PDF",
+                data=pdf_buffer.getvalue(),
+                file_name="plan_remediation.pdf",
+                mime="application/pdf",
+                use_container_width=True,
+            )
 
 
 if __name__ == "__main__":
