@@ -1,0 +1,6 @@
+Rapport de scan mensuel
+Genere le 2026-08-01
+,,,,,,,
+Identifiant CVE,Nom equipement,Adresse IP,Score CVSS,Criticite,Titre,Date detection,Statut Remediation
+CVE-2024-6387,srv-mail-01,10.0.2.11,8.1,Critique,regreSSHion OpenSSH RCE,2024-07-01,Ouvert
+CVE-2021-44228,srv-app-05,10.0.2.44,10.0,Critique,Log4Shell,2021-12-10,En cours
