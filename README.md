@@ -5,11 +5,117 @@ des exports de scan à formats variables sans réécriture de code.
 
 ## Statut du projet
 
-- [x] **Phase 1 — Ingestion universelle** (terminée)
-- [x] **Phase 2 — Enrichissement CVSS via API NVD** (terminée)
-- [ ] Phase 3 — Scoring composite + détection EOL
-- [ ] Phase 4 — Dashboard Streamlit
+- [x] **Phase 1 — Ingestion universelle** (terminée, validée en conditions réelles)
+- [x] **Phase 2 — Enrichissement CVSS via API NVD** (terminée, validée en conditions réelles)
+- [x] **Phase 3 — Scoring composite + détection EOL** (terminée, validée en conditions réelles)
+- [x] **Phase 4 — Dashboard Streamlit** (terminée)
 - [ ] Phase 5 — Export du plan de remédiation
+
+## Phase 4 : Dashboard Streamlit
+
+### Ce que ça apporte
+
+Une interface visuelle par-dessus le pipeline complet (Phases 1 à 3) : upload
+d'un fichier, exécution automatique de l'ingestion + enrichissement CVSS +
+enrichissement EPSS + scoring, puis visualisation interactive des résultats.
+
+### Fonctionnalités
+
+- **Upload de fichier** (CSV/Excel) depuis l'interface, ou utilisation d'un
+  fichier d'exemple en un clic.
+- **KPIs en un coup d'œil** : nombre total de vulnérabilités, nombre de P1,
+  nombre d'équipements EOL concernés, score moyen de priorité.
+- **Graphique de répartition** par niveau de priorité (P1 à P4).
+- **Table filtrable** : par tier de priorité, ou équipements EOL uniquement,
+  triée automatiquement par score de priorité décroissant.
+- **Export CSV** du plan de remédiation filtré, prêt à diffuser.
+- **Mise en cache** : un même fichier n'est jamais retraité deux fois (donc
+  pas de nouveaux appels API inutiles au NVD/EPSS si tu recharges la page).
+
+### Lancement
+
+```bash
+streamlit run dashboard/app.py
+```
+
+Une page s'ouvre automatiquement dans le navigateur (`http://localhost:8501`).
+
+### Validation
+
+Le lancement du serveur et la réponse HTTP ont été vérifiés en sandbox
+(sans upload de fichier réel, faute d'interaction navigateur possible
+dans cet environnement). **À toi de tester l'usage complet sur ton Mac** :
+upload d'un fichier, filtres, export CSV.
+
+## Phase 3 : Scoring composite + détection EOL
+
+### Le problème résolu
+
+Le CVSS seul est insuffisant pour prioriser : de nombreuses CVE au score CVSS
+très élevé (9+) ne sont en réalité jamais exploitées, tandis que des CVE au
+score plus modéré sur des actifs critiques exposés représentent un risque
+réel immédiat. S'appuyer uniquement sur le CVSS conduit à noyer les vraies
+urgences dans une longue liste de "critiques" théoriques.
+
+### La méthodologie (alignée sur les pratiques du secteur)
+
+Un score composite (0-100) combine 4 facteurs, à l'image des moteurs de
+priorisation utilisés par les plateformes professionnelles (Tenable VPR,
+Qualys QDS) :
+
+| Facteur | Poids | Source |
+|---|---|---|
+| CVSS (sévérité technique) | 35% | Phase 2 (NVD) |
+| EPSS (probabilité réelle d'exploitation sous 30 jours) | 30% | API FIRST.org (EPSS) |
+| Criticité métier de l'actif | 25% | Colonne `environment` du fichier source |
+| Statut EOL | 10% (bonus fixe +15 pts) | Colonne `is_eol` du fichier source |
+
+Le résultat est classé en 4 tiers : **P1 - Critique**, **P2 - Élevée**,
+**P3 - Moyenne**, **P4 - Faible**.
+
+**Qu'est-ce que l'EPSS ?** Contrairement au CVSS (sévérité théorique), l'EPSS
+donne la probabilité réelle qu'une CVE soit exploitée dans les 30 jours,
+basée sur des données d'exploitation observées en conditions réelles
+(scans, honeypots...). C'est ce qui permet de distinguer une CVE "critique
+sur le papier" d'une CVE réellement dangereuse maintenant.
+
+### Nouveaux modules
+
+- `config/scoring_config.py` : tous les poids et barèmes, centralisés et
+  ajustables sans toucher au code de calcul.
+- `enrichment/epss_client.py` : client pour l'API EPSS (FIRST.org),
+  même logique de cache et de tolérance aux pannes que le client NVD.
+- `scoring/composite_score.py` : calcule le score final et le tier de
+  priorité pour chaque ligne.
+
+### Colonnes optionnelles à ajouter à vos exports
+
+Pour un scoring fiable, ajoutez si possible ces deux colonnes à vos exports :
+- `environment` (ou `criticite`, `environnement`...) : ex. `production-internet`,
+  `production`, `test`
+- `is_eol` (ou `eol`, `fin_de_vie`...) : `oui`/`non`
+
+Si ces colonnes sont absentes, le module ne plante pas : il applique une
+criticité par défaut neutre et considère qu'aucun équipement n'est EOL,
+avec un message d'avertissement clair dans les logs.
+
+### Utilisation
+
+```bash
+python -m scoring.composite_score data/export_format_A.csv
+```
+
+### Tests
+
+Comme pour le NVD, le sandbox de développement n'a pas d'accès réseau à
+l'API EPSS (`api.first.org`). Les tests simulent donc la logique de calcul :
+
+```bash
+python tests/test_scoring.py
+```
+
+**À valider sur ton poste avec accès internet réel** : la commande
+d'utilisation ci-dessus, pour un appel EPSS réel.
 
 ## Phase 2 : Enrichissement CVSS via l'API NVD
 

@@ -1,4 +1,4 @@
-Hostname,IP Address,CVE ID,Vulnerability Name,CVSS Score,Severity,Detected Date,Status
-srv-web-01,10.0.1.15,CVE-2024-3400,PAN-OS Command Injection,10.0,Critical,2024-04-12,Open
-srv-db-02,10.0.1.22,CVE-2023-44487,HTTP/2 Rapid Reset,7.5,High,2024-01-10,Open
-srv-auth-03,10.0.1.30,CVE-2022-0778,OpenSSL Infinite Loop,7.5,High,2024-02-05,Remediated
+Hostname,IP Address,CVE ID,Vulnerability Name,CVSS Score,Severity,Detected Date,Status,Environment,EOL
+srv-web-01,10.0.1.15,CVE-2024-3400,PAN-OS Command Injection,10.0,Critical,2024-04-12,Open,production-internet,non
+srv-db-02,10.0.1.22,CVE-2023-44487,HTTP/2 Rapid Reset,7.5,High,2024-01-10,Open,production,non
+srv-auth-03,10.0.1.30,CVE-2022-0778,OpenSSL Infinite Loop,7.5,High,2024-02-05,Remediated,test,oui
